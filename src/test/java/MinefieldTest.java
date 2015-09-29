@@ -26,5 +26,37 @@ public class MinefieldTest extends TestCase {
 
         Minefield minefield = new Minefield(testcase);
         Character[][] result = minefield.solve();
+
+
+        Integer[][] testCaseResults = new Integer[][] {
+                // x, y, value
+
+                // upper-left corner
+                {1, 0, 1},
+                {0, 1, 1},
+                {1, 1, 1},
+
+                // upper-right corner
+                {testcase.length - 2, 0, 1},
+                {testcase.length - 2, 1, 1},
+                {testcase.length - 1, 1, 1},
+
+                // lower-left corner
+                {0, testcase.length - 2, 1},
+                {1, testcase.length - 2, 1},
+                {1, testcase.length - 1, 1},
+
+                // lower-right corner
+                {testcase.length - 2, testcase.length - 1, 1},
+                {testcase.length - 2, testcase.length - 2, 1},
+                {testcase.length - 1, testcase.length - 2, 1},
+
+                // center
+        };
+
+        for (Integer[] values : testCaseResults) {
+            // use strings here since we're comparing ints and chars originally
+            assertEquals(values[2].toString(), result[values[1]][values[0]].toString());
+        }
     }
 }
