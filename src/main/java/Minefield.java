@@ -67,8 +67,6 @@ public class Minefield {
 
                 if (value == MINE) {
                     returnValue[y][x] = '*';
-                } else if (value == EMPTY) {
-                    returnValue[y][x] = '.';
                 } else {
                     // we can safely convert this to a char and take index 0 since we'll
                     // never have more than 8 mines surrounding one location

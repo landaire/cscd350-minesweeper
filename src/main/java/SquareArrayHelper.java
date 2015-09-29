@@ -137,10 +137,16 @@ class SquareArrayHelper<T> {
         }
     }
 
-    /**
-     * @return the backing array
-     */
-    public T[][] getArray() {
-        return array;
+    public void print() {
+        print(this.array);
+    }
+
+    public static void print(Object[][] array) {
+        for (Object[] y : array) {
+            for (Object x : y) {
+                System.out.print(x);
+            }
+            System.out.println();
+        }
     }
 }

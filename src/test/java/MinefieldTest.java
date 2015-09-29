@@ -22,7 +22,7 @@ public class MinefieldTest extends TestCase {
 
         // set two bombs in the middle
         array.set(SquareArrayHelper.Location.CENTER, (testcase.length - 1) / 2, (testcase.length - 1) / 2, '*');
-        array.set(SquareArrayHelper.Location.CENTER, (testcase.length - 2) / 2, (testcase.length - 2) / 2, '*');
+        array.set(SquareArrayHelper.Location.CENTER, ((testcase.length - 1) / 2) - 1, ((testcase.length - 1) / 2) - 1, '*');
 
         Minefield minefield = new Minefield(testcase);
         Character[][] result = minefield.solve();
@@ -51,12 +51,18 @@ public class MinefieldTest extends TestCase {
                 {testcase.length - 2, testcase.length - 2, 1},
                 {testcase.length - 1, testcase.length - 2, 1},
 
-                // center
+                // center. this doesn't cover all values, but is good enough
+                {((testcase.length - 1) / 2), ((testcase.length - 1) / 2) - 1, 2},
+                {((testcase.length - 1) / 2) - 1, ((testcase.length - 1) / 2), 2},
+                {((testcase.length - 1) / 2), ((testcase.length - 1) / 2) + 1, 1},
+                {((testcase.length - 1) / 2) - 2, ((testcase.length - 1) / 2), 1},
         };
 
         for (Integer[] values : testCaseResults) {
             // use strings here since we're comparing ints and chars originally
             assertEquals(values[2].toString(), result[values[1]][values[0]].toString());
         }
+
+//        SquareArrayHelper.print(result);
     }
 }
