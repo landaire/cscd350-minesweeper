@@ -10,8 +10,8 @@ public class MinefieldTest extends TestCase {
 
     }
 
-    public void testSolve() throws Exception {
-        Character[][] testcase = MinefieldTestcases.maxArray();
+    public void testSolveLarge() throws Exception {
+        Character[][] testcase = maxArray();
 
         SquareArrayHelper<Character> array = new SquareArrayHelper<Character>(testcase);
         // set the bombs at all corners
@@ -62,7 +62,34 @@ public class MinefieldTest extends TestCase {
             // use strings here since we're comparing ints and chars originally
             assertEquals(values[2].toString(), result[values[1]][values[0]].toString());
         }
+    }
 
-//        SquareArrayHelper.print(result);
+    public void testSolveMin() throws Exception {
+        Minefield field = new Minefield(minArray());
+        Character[][] result = field.solve();
+
+        assertEquals((Character)'0', result[0][0]);
+    }
+
+    private static Character[][] maxArray() {
+        final int maxSize = 100;
+        return genArray(maxSize, maxSize);
+    }
+
+    private static Character[][] minArray() {
+        final int minSize = 1;
+        return genArray(minSize, minSize);
+    }
+
+    private static Character[][] genArray(int rows, int cols) {
+        Character[][] output = new Character[rows][cols];
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                output[i][j] = '.';
+            }
+        }
+
+        return output;
     }
 }

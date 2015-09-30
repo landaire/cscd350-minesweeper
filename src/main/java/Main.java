@@ -32,12 +32,18 @@ public class Main {
      * @return null|Minefield null is returned when an error occurs or EOF reached
      */
     private static Minefield getGameboard(Scanner scanner) {
+        // Read in the rows/columns
         int columns, rows;
         rows = scanner.nextInt();
         columns = scanner.nextInt();
-        // discard linefeed
-        scanner.nextLine();
 
+        // discard linefeed. we first check if a next line exists in the case that
+        // we are reading from a file and the final line does not have a linefeed
+        if (scanner.hasNext()) {
+            scanner.nextLine();
+        }
+
+        // check columns/rows for errors or EOF
         if (columns  == 0 && rows == 0) {
             return null;
         } else if (columns == 0 || rows == 0) {
