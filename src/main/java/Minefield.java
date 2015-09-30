@@ -18,17 +18,17 @@ public class Minefield {
      *                  </pre>
      */
     public Minefield(Character[][] minefield) {
-        this.minefield = new Integer[minefield.length][minefield.length];
+        this.minefield = new Integer[minefield.length][minefield[0].length];
 
         for (int i = 0; i < minefield.length; i++) {
-            for (int j = 0; j < minefield.length; j++) {
+            for (int j = 0; j < minefield[i].length; j++) {
                 this.minefield[i][j] = minefield[i][j] == '*' ? MINE : EMPTY;
             }
         }
     }
 
     public Character[][] solve() {
-        Integer[][] minefieldCopy = new Integer[minefield.length][minefield.length];
+        Integer[][] minefieldCopy = new Integer[minefield.length][minefield[0].length];
         for (int i = 0; i < minefield.length; i++) {
             System.arraycopy(minefield[i], 0, minefieldCopy[i], 0, minefieldCopy[i].length);
         }
@@ -59,7 +59,7 @@ public class Minefield {
             }
         }
 
-        Character[][] returnValue = new Character[minefieldCopy.length][minefieldCopy.length];
+        Character[][] returnValue = new Character[minefieldCopy.length][minefieldCopy[0].length];
 
         for (int y = 0; y < minefieldCopy.length; y++) {
             for (int x = 0; x < minefieldCopy[y].length; x++) {
