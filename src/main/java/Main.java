@@ -39,7 +39,7 @@ public class Main {
 
         // discard linefeed. we first check if a next line exists in the case that
         // we are reading from a file and the final line does not have a linefeed
-        if (scanner.hasNext()) {
+        if (scanner.hasNextLine()) {
             scanner.nextLine();
         }
 
