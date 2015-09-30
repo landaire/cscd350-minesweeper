@@ -19,7 +19,7 @@ public class Main {
         }
 
         for (int i = 0; i < fields.size(); i++) {
-            System.out.printf("Field #%d\n", i + 1);
+            System.out.printf("Field #%d:\n", i + 1);
             SquareArrayHelper.print(fields.get(i).solve());
             System.out.println();
         }
@@ -33,8 +33,8 @@ public class Main {
      */
     private static Minefield getGameboard(Scanner scanner) {
         int columns, rows;
-        columns = scanner.nextInt();
         rows = scanner.nextInt();
+        columns = scanner.nextInt();
         // discard linefeed
         scanner.nextLine();
 
